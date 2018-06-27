@@ -222,7 +222,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#documents-and-folders" class="toc-h1 toc-link" data-title="documents-and-folders">Documents and folders</a>
+            <a href="#file-leven-documents-and-folders" class="toc-h1 toc-link" data-title="file-leven-documents-and-folders">File-leven (documents and folders)</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-all-documents-and-folders" class="toc-h2 toc-link" data-title="get-all-documents-and-folders">Get all documents and folders</a>
@@ -230,6 +230,11 @@
                   <li>
                     <a href="#make-changes-to-documents-and-folders" class="toc-h2 toc-link" data-title="make-changes-to-documents-and-folders">Make changes to documents and folders</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#document-level" class="toc-h1 toc-link" data-title="document-level">Document-level</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#get-content-of-a-document" class="toc-h2 toc-link" data-title="get-content-of-a-document">Get content of a document</a>
                   </li>
@@ -250,18 +255,27 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>You can get an API key from our developer page.</p>
+<p>You can get an API token from <a href="https://dynalist.io/developer">our developer page</a>.</p>
 
 <aside class="warning">
     Your API token is very important, <b>DO NOT SHARE WITH OTHERS</b>. Others can access your Dynalist data with your API key, so be very careful.
 </aside>
 
+<p>All of our endpoints expect <code>POST</code> requests, and the Content-Type is <code>application/json</code>.</p>
+
 <aside class="notice">
     In the example returned JSON responses, placeholder text like "&lt;document id&gt;" and "&lt;node id&gt;" will be replaced by real values.
 </aside>
-<h1 id='documents-and-folders'>Documents and folders</h1><h2 id='get-all-documents-and-folders'>Get all documents and folders</h2>
+<h1 id='file-leven-documents-and-folders'>File-leven (documents and folders)</h1><h2 id='get-all-documents-and-folders'>Get all documents and folders</h2>
 <blockquote>
-<p>This endpoint returns JSON structured like this:</p>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api token&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -289,7 +303,7 @@
 </span></code></pre>
 <p>This endpoint fetches all your documents and folders.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://dynalist.io/api/v1/file/list</code></p>
+<p><code>POST https://dynalist.io/api/v1/file/list</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -355,7 +369,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>This endpoint returns JSON structured like this:</p>
+<p>Example response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -364,8 +378,8 @@
 </span></code></pre>
 <p>This endpoint lets you make changes to specific documents and folders.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://dynalist.io/api/v1/file/edit</code></p>
-<h3 id='url-parameters'>URL parameters</h3>
+<p><code>POST https://dynalist.io/api/v1/file/edit</code></p>
+<h3 id='request-parameters'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -384,7 +398,9 @@
 <td>Array of changes to perform (see below for the required format).</td>
 </tr>
 </tbody></table>
-<h3 id='change-format'>Change format</h3>
+
+<p>There are two types of file-level change: <code>move</code> and <code>edit</code>. <code>move</code> moves the document or folder under another folder; <code>edit</code> changes the title of the document or folder</p>
+<h3 id='move-format'><code>move</code> format</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -395,7 +411,7 @@
 <tr>
 <td>action</td>
 <td>String</td>
-<td>Action to perform. Must be either <code>move</code> or <code>edit</code>. Use <code>move</code> to move the document or folder under another folder, or use <code>edit</code> to change the title of the document or folder.</td>
+<td><code>move</code>.</td>
 </tr>
 <tr>
 <td>type</td>
@@ -405,27 +421,59 @@
 <tr>
 <td>file_id</td>
 <td>String</td>
-<td>The ID of the document or folder you&#39;re trying to change or move.</td>
+<td>The ID of the document or folder you&#39;re trying to move.</td>
 </tr>
 <tr>
 <td>parent_id</td>
 <td>String</td>
-<td>Required if action is <code>move</code>. The file ID of the parent folder you want to move the target file to.</td>
+<td>The file ID of the parent folder you want to move the target file to.</td>
 </tr>
 <tr>
 <td>index</td>
 <td>Integer</td>
-<td>Required if action is <code>move</code>. This field is an integer that&#39;s the zero-indexed position you want the file to land in the parent folder, must be represent if action is <code>move</code>, supply <code>-1</code> to place it at the end, and <code>0</code> to place it at the top.</td>
+<td>This field is an integer that&#39;s the zero-indexed position you want the file to land in the parent folder, supply <code>-1</code> to place it at the end, and <code>0</code> to place it at the top.</td>
+</tr>
+</tbody></table>
+<h3 id='edit-format'><code>edit</code> format</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td><code>edit</code>.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Type of the target file. Must be either <code>folder</code> or <code>document</code>.</td>
+</tr>
+<tr>
+<td>file_id</td>
+<td>String</td>
+<td>The ID of the document or folder you&#39;re trying to change.</td>
 </tr>
 <tr>
 <td>title</td>
 <td>String</td>
-<td>Required if action is <code>edit</code>. The new title that you&#39;re trying to set.</td>
+<td>The new title that you&#39;re trying to set.</td>
 </tr>
 </tbody></table>
-<h2 id='get-content-of-a-document'>Get content of a document</h2>
+<h1 id='document-level'>Document-level</h1><h2 id='get-content-of-a-document'>Get content of a document</h2>
 <blockquote>
-<p>This endpoint returns JSON structured like this:</p>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api token&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document id&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Todo list"</span><span class="p">,</span><span class="w">
@@ -471,8 +519,8 @@
 </span></code></pre>
 <p>This endpoint fetches the content of a specific document.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://dynalist.io/api/v1/doc/read</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p><code>POST https://dynalist.io/api/v1/doc/read</code></p>
+<h3 id='request-parameters-2'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -522,7 +570,7 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>This endpoint returns JSON structured like this:</p>
+<p>Example response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -533,8 +581,8 @@
 </span></code></pre>
 <p>This endpoint lets you make changes to the content of a specific document.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://dynalist.io/api/v1/doc/edit</code></p>
-<h3 id='url-parameters-3'>URL parameters</h3>
+<p><code>POST https://dynalist.io/api/v1/doc/edit</code></p>
+<h3 id='request-parameters-3'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -558,7 +606,9 @@
 <td>Array of changes to perform (see below for the required format).</td>
 </tr>
 </tbody></table>
-<h3 id='change-format-2'>Change format</h3>
+
+<p>There are four types of node-level change: <code>insert</code>, <code>edit</code>, <code>move</code>, and <code>delete</code>.</p>
+<h3 id='insert-format'><code>insert</code> format</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -569,49 +619,132 @@
 <tr>
 <td>action</td>
 <td>String</td>
-<td>Action to perform. Must be one of <code>insert</code>, <code>edit</code>, <code>move</code> or <code>delete</code>.</td>
-</tr>
-<tr>
-<td>node_id</td>
-<td>String</td>
-<td>Required if action is <code>edit</code>, <code>move</code>, or <code>delete</code>. The ID of the item to change.</td>
+<td><code>insert</code>.</td>
 </tr>
 <tr>
 <td>parent_id</td>
 <td>String</td>
-<td>Required if action is <code>insert</code> or <code>move</code>. The ID of the parent item</td>
-</tr>
-<tr>
-<td>index</td>
-<td>Integer</td>
-<td>Required if action is <code>move</code>. This field is an integer that&#39;s the zero-indexed position you want the file to land in the parent folder, must be represent if action is <code>move</code>, supply <code>-1</code> to place it at the end, and <code>0</code> to place it at the top.</td>
+<td>The ID of the parent item to insert under.</td>
 </tr>
 <tr>
 <td>content</td>
 <td>String</td>
-<td>New item title. Used for the <code>insert</code> and <code>edit</code> actions.</td>
+<td>New item title.</td>
 </tr>
 <tr>
 <td>note</td>
 <td>String</td>
-<td>New item note. Used for the <code>insert</code> and <code>edit</code> actions.</td>
+<td>New item note.</td>
 </tr>
 <tr>
 <td>checked</td>
 <td>Boolean</td>
-<td>New item checked status. Used for the <code>insert</code> and <code>edit</code> actions.</td>
+<td>New item checked status.</td>
+</tr>
+</tbody></table>
+<h3 id='edit-format-2'><code>edit</code> format</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td><code>edit</code>.</td>
+</tr>
+<tr>
+<td>node_id</td>
+<td>String</td>
+<td>The ID of the item to edit.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>String</td>
+<td>New item title.</td>
+</tr>
+<tr>
+<td>note</td>
+<td>String</td>
+<td>New item note.</td>
+</tr>
+<tr>
+<td>checked</td>
+<td>Boolean</td>
+<td>New item checked status.</td>
+</tr>
+</tbody></table>
+<h3 id='move-format-2'><code>move</code> format</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td><code>move</code>.</td>
+</tr>
+<tr>
+<td>node_id</td>
+<td>String</td>
+<td>The ID of the item to change.</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>String</td>
+<td>The ID of the parent item to move item under.</td>
+</tr>
+<tr>
+<td>index</td>
+<td>Integer</td>
+<td>This field is an integer that&#39;s the zero-indexed position you want the file to land in the parent folder, supply <code>-1</code> to place it at the end, and <code>0</code> to place it at the top.</td>
+</tr>
+</tbody></table>
+<h3 id='delete-format'><code>delete</code> format</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td><code>delete</code></td>
+</tr>
+<tr>
+<td>node_id</td>
+<td>String</td>
+<td>The ID of the item to delete.</td>
 </tr>
 </tbody></table>
 <h2 id='send-to-inbox'>Send to inbox</h2>
 <blockquote>
-<p>This endpoint returns JSON structured like this:</p>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api token&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get the book recommended by Jerry"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Should be available in the city library, or on Amazon for around $25"</span><span class="w">
+  </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="kc">true</span><span class="w">
 </span></code></pre>
 <p>This endpoint lets you make changes to the content of a specific document.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://dynalist.io/api/v1/inbox/add</code></p>
-<h3 id='url-parameters-4'>URL parameters</h3>
+<p><code>POST https://dynalist.io/api/v1/inbox/add</code></p>
+<h3 id='request-parameters-4'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
