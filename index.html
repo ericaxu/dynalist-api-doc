@@ -222,7 +222,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#file-leven-documents-and-folders" class="toc-h1 toc-link" data-title="file-leven-documents-and-folders">File-leven (documents and folders)</a>
+            <a href="#file-level" class="toc-h1 toc-link" data-title="file-level">File-level</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-all-documents-and-folders" class="toc-h2 toc-link" data-title="get-all-documents-and-folders">Get all documents and folders</a>
@@ -246,60 +246,74 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#rate-limit-explanation" class="toc-h1 toc-link" data-title="rate-limit-explanation">Rate limit explanation</a>
+          </li>
+          <li>
+            <a href="#error-reference" class="toc-h1 toc-link" data-title="error-reference">Error reference</a>
+          </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Go to Dynalist developer portal</a></li>
+            <li><a href='https://dynalist.io/developer'>Dynalist developer page</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>You can get an API token from <a href="https://dynalist.io/developer">our developer page</a>.</p>
+<p>You can get an API secret from <a href="https://dynalist.io/developer">our developer page</a>.</p>
 
 <aside class="warning">
-    Your API token is very important, <b>DO NOT SHARE WITH OTHERS</b>. Others can access your Dynalist data with your API key, so be very careful.
+    Your API secret token is very important, <b>DO NOT SHARE WITH OTHERS</b>. Others can access your Dynalist data with your token, so be very careful.
 </aside>
 
 <p>All of our endpoints expect <code>POST</code> requests, and the Content-Type is <code>application/json</code>.</p>
 
 <aside class="notice">
-    In the example returned JSON responses, placeholder text like "&lt;document id&gt;" and "&lt;node id&gt;" will be replaced by real values.
+    In the example returned JSON responses, placeholder text like <b>"&lt;document id&gt;"</b> and <b>"&lt;node id&gt;"</b> should be replaced by real values.
 </aside>
-<h1 id='file-leven-documents-and-folders'>File-leven (documents and folders)</h1><h2 id='get-all-documents-and-folders'>Get all documents and folders</h2>
+<h1 id='file-level'>File-level</h1><h2 id='get-all-documents-and-folders'>Get all documents and folders</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api token&gt;"</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api secret token&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Todo list"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;folder id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Study notes"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document id&gt;"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Psychology 101"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"root_file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document 1 id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Todo list"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document 2 id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting notes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;folder id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Study notes"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"&lt;document 1 id&gt;"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"&lt;document 2 id"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <p>This endpoint fetches all your documents and folders.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -315,7 +329,7 @@
 <tr>
 <td>token</td>
 <td>String</td>
-<td>Your API key.</td>
+<td>Your API secret token.</td>
 </tr>
 </tbody></table>
 
@@ -348,33 +362,44 @@
 <td>Owner</td>
 </tr>
 </tbody></table>
+<h3 id='possible-errors'>Possible errors</h3>
+<p><code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<h3 id='rate-limit-policy'>Rate limit policy</h3>
+<p>For this endpoint, the capacity is <b>10</b>, and the refill time is <b>10 seconds</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 <h2 id='make-changes-to-documents-and-folders'>Make changes to documents and folders</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New title"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"move"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;folder id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;folder id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api secret token&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New title"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"move"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;folder id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;folder id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="kc">false</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">succeeded</span><span class="w">
+    </span><span class="kc">false</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">failed</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lets you make changes to specific documents and folders.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
@@ -390,7 +415,7 @@
 <tr>
 <td>token</td>
 <td>String</td>
-<td>Your API key.</td>
+<td>Your API scret token.</td>
 </tr>
 <tr>
 <td>changes</td>
@@ -463,12 +488,18 @@
 <td>The new title that you&#39;re trying to set.</td>
 </tr>
 </tbody></table>
+<h3 id='response'>Response</h3>
+<p>The response contains a <code>results</code> field, which is an array of boolean values. Each boolean value represents if a change succeeded or not. The booleans are in the same order as the incoming changes.</p>
+<h3 id='possible-errors-2'>Possible errors</h3>
+<p><code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<h3 id='rate-limit-policy-2'>Rate limit policy</h3>
+<p>For this endpoint, the capacity is <b>50</b>, and the refill time is <b>1 second</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 <h1 id='document-level'>Document-level</h1><h2 id='get-content-of-a-document'>Get content of a document</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api token&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api secret token&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document id&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -476,7 +507,9 @@
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"Title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Todo list"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Todo list"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"nodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;node #1 id&gt;"</span><span class="p">,</span><span class="w">
@@ -531,7 +564,7 @@
 <tr>
 <td>token</td>
 <td>String</td>
-<td>Your API key.</td>
+<td>Your API secret token.</td>
 </tr>
 <tr>
 <td>file_id</td>
@@ -539,45 +572,50 @@
 <td>The ID of the document to fetch.</td>
 </tr>
 </tbody></table>
+<h3 id='possible-errors-3'>Possible errors</h3>
+<p><code>Unauthorized</code>, <code>NotFound</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<h3 id='rate-limit-policy-3'>Rate limit policy</h3>
+<p>For this endpoint, the capacity is <b>50</b>, and the refill time is <b>1 second</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 <h2 id='make-change-to-the-content-of-a-document'>Make change to the content of a document</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;parent node id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read the second book in the series"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Return the book to the library by 04/23."</span><span class="w">
-    </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;target node id&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"move"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;target item ID&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;parent item ID&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delete"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;target item ID&gt;"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insert"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;parent node id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read the second book in the series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Return the book to the library by 04/23."</span><span class="w">
+      </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;target node id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"move"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;target item ID&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;parent item ID&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delete"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;target item ID&gt;"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="kc">false</span><span class="w">
-  </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="kc">true</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">succeeded</span><span class="p">,</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">error</span><span class="w"> </span><span class="err">code</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">returned</span><span class="w"> </span><span class="err">otherwise</span><span class="w">
+  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lets you make changes to the content of a specific document.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
@@ -593,7 +631,7 @@
 <tr>
 <td>token</td>
 <td>String</td>
-<td>Your API key.</td>
+<td>Your API secret token.</td>
 </tr>
 <tr>
 <td>file_id</td>
@@ -724,12 +762,20 @@
 <td>The ID of the item to delete.</td>
 </tr>
 </tbody></table>
+<h3 id='response-2'>Response</h3>
+<p>The response contains a <code>results</code> field, which is an array of boolean values. Each boolean value represents if a change succeeded or not. The booleans are in the same order as the incoming changes.</p>
+<h3 id='possible-errors-4'>Possible errors</h3>
+<p><code>Unauthorized</code>, <code>NotFound</code>, <code>NodeNotFound</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<h3 id='rate-limit-policy-4'>Rate limit policy</h3>
+<p>For this endpoint, the capacity is <b>20</b>, and the refill time is <b>1 second</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
+
+<p>The rate limit above is for <b>number of requests</b>. There&#39;s another rate limit for the number of changes you can send. The same model is used, with capacity being <b>500</b> and refill time being <b>0.25 seconds</b>.</p>
 <h2 id='send-to-inbox'>Send to inbox</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api token&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api secret token&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get the book recommended by Jerry"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Should be available in the city library, or on Amazon for around $25"</span><span class="w">
@@ -739,9 +785,12 @@
 <blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="kc">true</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">succeeded</span><span class="p">,</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">error</span><span class="w"> </span><span class="err">code</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">returned</span><span class="w"> </span><span class="err">otherwise</span><span class="w">
+  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint lets you make changes to the content of a specific document.</p>
+<p>This endpoint lets you send a new item to your inbox location.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://dynalist.io/api/v1/inbox/add</code></p>
 <h3 id='request-parameters-4'>Request parameters</h3>
@@ -755,7 +804,7 @@
 <tr>
 <td>token</td>
 <td>String</td>
-<td>Your API key.</td>
+<td>Your API secret token.</td>
 </tr>
 <tr>
 <td>index</td>
@@ -776,6 +825,58 @@
 <td>checked</td>
 <td>Boolean</td>
 <td>Checked status of the new item. Default: false.</td>
+</tr>
+</tbody></table>
+<h3 id='possible-errors-5'>Possible errors</h3>
+<p><code>NoInbox</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<h3 id='rate-limit-policy-5'>Rate limit policy</h3>
+<p>For this endpoint, the capacity is 20, and the refill time is 1 second. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
+<h1 id='rate-limit-explanation'>Rate limit explanation</h1>
+<p>Our API uses a token bucket rate limit model. Each endpoint has its own policy, based on how resource consuming the endpoint is.</p>
+
+<p>For each user, each endpoint has a quota. This number represents how many requests that you can send. This number is called the &quot;capacity&quot;.</p>
+
+<p>Additionally, this quota will be refilled by 1 request every X seconds. This length of time is called the &quot;refill time&quot;.</p>
+<h1 id='error-reference'>Error reference</h1>
+<p>All responses contain the field <code>_code</code> and <code>_msg</code>.</p>
+
+<p><code>_code</code> being <code>OK</code> means the request succeeded through. Any other value means something went wrong; you can find the meaning of each below. The <code>_msg</code> field gives you more information about the error.</p>
+
+<p>Here are all the errors returned by the Dynalist API and their meaning:</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>TooManyRequests</code></td>
+<td>You&#39;ve hit the limit on how many requests you can send.</td>
+</tr>
+<tr>
+<td><code>InvalidToken</code></td>
+<td>Your secret token is invalid.</td>
+</tr>
+<tr>
+<td><code>LockFail</code></td>
+<td>Server unable to handle the request.</td>
+</tr>
+<tr>
+<td><code>Unauthorized</code></td>
+<td>You don&#39;t have permission to access this document.</td>
+</tr>
+<tr>
+<td><code>NotFound</code></td>
+<td>The document you&#39;re requesting is not found.</td>
+</tr>
+<tr>
+<td><code>NodeNotFound</code></td>
+<td>The node (item) you&#39;re requesting is not found.</td>
+</tr>
+<tr>
+<td><code>NoInbox</code></td>
+<td>Inbox location is not configured, or invalid.</td>
 </tr>
 </tbody></table>
 
