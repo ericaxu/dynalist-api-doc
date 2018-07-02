@@ -286,7 +286,7 @@
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"root_file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"root_file_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;root folder id&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;document 1 id&gt;"</span><span class="p">,</span><span class="w">
@@ -308,7 +308,17 @@
       </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="s2">"&lt;document 1 id&gt;"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"&lt;document 2 id"</span><span class="w">
+          </span><span class="s2">"&lt;document 2 id&gt;"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;root folder id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Untitled"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"&lt;folder id&gt;"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -363,9 +373,9 @@
 </tr>
 </tbody></table>
 <h3 id='possible-errors'>Possible errors</h3>
-<p><code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<p><code>Invalid</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
 <h3 id='rate-limit-policy'>Rate limit policy</h3>
-<p>For this endpoint, the capacity is <b>10</b>, and the refill time is <b>10 seconds</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
+<p>You can access this API at a steady rate of 6 times per minute, with a burst of 10 requets at once. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 <h2 id='make-changes-to-documents-and-folders'>Make changes to documents and folders</h2>
 <blockquote>
 <p>Example request:</p>
@@ -493,7 +503,7 @@
 <h3 id='possible-errors-2'>Possible errors</h3>
 <p><code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
 <h3 id='rate-limit-policy-2'>Rate limit policy</h3>
-<p>For this endpoint, the capacity is <b>50</b>, and the refill time is <b>1 second</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
+<p>You can access this API at a steady rate of 60 times per minute, with a burst of 50 requets at once. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 <h1 id='document-level'>Document-level</h1><h2 id='get-content-of-a-document'>Get content of a document</h2>
 <blockquote>
 <p>Example request:</p>
@@ -573,9 +583,9 @@
 </tr>
 </tbody></table>
 <h3 id='possible-errors-3'>Possible errors</h3>
-<p><code>Unauthorized</code>, <code>NotFound</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<p><code>Invalid</code>, <code>Unauthorized</code>, <code>NotFound</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
 <h3 id='rate-limit-policy-3'>Rate limit policy</h3>
-<p>For this endpoint, the capacity is <b>50</b>, and the refill time is <b>1 second</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
+<p>You can access this API at a steady rate of 60 times per minute, with a burst of 50 requets at once. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 <h2 id='make-change-to-the-content-of-a-document'>Make change to the content of a document</h2>
 <blockquote>
 <p>Example request:</p>
@@ -670,12 +680,12 @@
 <td>New item title.</td>
 </tr>
 <tr>
-<td>note</td>
+<td>note (optional)</td>
 <td>String</td>
 <td>New item note.</td>
 </tr>
 <tr>
-<td>checked</td>
+<td>checked (optional)</td>
 <td>Boolean</td>
 <td>New item checked status.</td>
 </tr>
@@ -699,17 +709,17 @@
 <td>The ID of the item to edit.</td>
 </tr>
 <tr>
-<td>content</td>
+<td>content (optional)</td>
 <td>String</td>
 <td>New item title.</td>
 </tr>
 <tr>
-<td>note</td>
+<td>note (optional)</td>
 <td>String</td>
 <td>New item note.</td>
 </tr>
 <tr>
-<td>checked</td>
+<td>checked (optional)</td>
 <td>Boolean</td>
 <td>New item checked status.</td>
 </tr>
@@ -765,11 +775,11 @@
 <h3 id='response-2'>Response</h3>
 <p>The response contains a <code>results</code> field, which is an array of boolean values. Each boolean value represents if a change succeeded or not. The booleans are in the same order as the incoming changes.</p>
 <h3 id='possible-errors-4'>Possible errors</h3>
-<p><code>Unauthorized</code>, <code>NotFound</code>, <code>NodeNotFound</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<p><code>Invalid</code>, <code>Unauthorized</code>, <code>NotFound</code>, <code>NodeNotFound</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
 <h3 id='rate-limit-policy-4'>Rate limit policy</h3>
-<p>For this endpoint, the capacity is <b>20</b>, and the refill time is <b>1 second</b>. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
+<p>You can access this API at a steady rate of 60 times per minute, with a burst of 20 requets at once. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 
-<p>The rate limit above is for <b>number of requests</b>. There&#39;s another rate limit for the number of changes you can send. The same model is used, with capacity being <b>500</b> and refill time being <b>0.25 seconds</b>.</p>
+<p>The rate limit above is for <b>number of requests</b>. There&#39;s another rate limit for the number of changes you can send. You can send changes at a steady rate of 240 changes per minute, with a burst of 500 changes</b>.</p>
 <h2 id='send-to-inbox'>Send to inbox</h2>
 <blockquote>
 <p>Example request:</p>
@@ -817,26 +827,24 @@
 <td>Title of the new item. Default: empty.</td>
 </tr>
 <tr>
-<td>note</td>
+<td>note (optional)</td>
 <td>String</td>
 <td>Note of the new item. Default: empty.</td>
 </tr>
 <tr>
-<td>checked</td>
+<td>checked (optional)</td>
 <td>Boolean</td>
 <td>Checked status of the new item. Default: false.</td>
 </tr>
 </tbody></table>
 <h3 id='possible-errors-5'>Possible errors</h3>
-<p><code>NoInbox</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
+<p><code>Invalid</code>, <code>NoInbox</code>, <code>InvalidToken</code>, <code>TooManyRequests</code>, <code>LockFail</code></p>
 <h3 id='rate-limit-policy-5'>Rate limit policy</h3>
-<p>For this endpoint, the capacity is 20, and the refill time is 1 second. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
+<p>You can access this API at a steady rate of 60 times per minute, with a burst of 20 requets at once. See the <a href="#rate-limit-explanation">rate limit section</a> for more information on how it works.</p>
 <h1 id='rate-limit-explanation'>Rate limit explanation</h1>
-<p>Our API uses a token bucket rate limit model. Each endpoint has its own policy, based on how resource consuming the endpoint is.</p>
+<p>Our API uses a token bucket rate limit model. Each endpoint sets a limit on a steady-state rate and a burst of requests. In the token bucket algorithm, the burst is the maximum bucket size.</p>
 
-<p>For each user, each endpoint has a quota. This number represents how many requests that you can send. This number is called the &quot;capacity&quot;.</p>
-
-<p>Additionally, this quota will be refilled by 1 request every X seconds. This length of time is called the &quot;refill time&quot;.</p>
+<p>If you exceed this limit, you&#39;ll get a <code>TooManyRequests</code> error response.</p>
 <h1 id='error-reference'>Error reference</h1>
 <p>All responses contain the field <code>_code</code> and <code>_msg</code>.</p>
 
@@ -850,6 +858,10 @@
 <th>Meaning</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>Invalid</code></td>
+<td>Your request is not valid JSON.</td>
+</tr>
 <tr>
 <td><code>TooManyRequests</code></td>
 <td>You&#39;ve hit the limit on how many requests you can send.</td>
