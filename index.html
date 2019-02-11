@@ -328,7 +328,7 @@
 <p>This endpoint fetches all your documents and folders.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://dynalist.io/api/v1/file/list</code></p>
-<h3 id='query-parameters'>Request Parameters</h3>
+<h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -414,7 +414,7 @@
 <p>This endpoint lets you make changes to specific documents and folders.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://dynalist.io/api/v1/file/edit</code></p>
-<h3 id='request-parameters'>Request parameters</h3>
+<h3 id='request-parameters-2'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -527,7 +527,6 @@
       </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2L whole milk"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -535,7 +534,6 @@
       </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Send Jason photos"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"&lt;node #3 id&gt;"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"&lt;node #4 id&gt;"</span><span class="w">
@@ -546,7 +544,6 @@
       </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Picnic photos"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;node #2 id&gt;"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -554,7 +551,6 @@
       </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cruise photos"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"collapsed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;node #2 id&gt;"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -563,7 +559,7 @@
 <p>This endpoint fetches the content of a specific document.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://dynalist.io/api/v1/doc/read</code></p>
-<h3 id='request-parameters-2'>Request parameters</h3>
+<h3 id='request-parameters-3'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -598,7 +594,7 @@
       </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;parent node id&gt;"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read the second book in the series"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Return the book to the library by 04/23."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Return the book to the library by 04/23."</span><span class="w">
       </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -624,13 +620,16 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">succeeded</span><span class="p">,</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">error</span><span class="w"> </span><span class="err">code</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">returned</span><span class="w"> </span><span class="err">otherwise</span><span class="w">
-  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"new_node_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">ids</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">newly</span><span class="w"> </span><span class="err">inserted</span><span class="w"> </span><span class="err">items</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">they</span><span class="w"> </span><span class="err">were</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">in</span><span class="w">
+    </span><span class="s2">"&lt;new item ID&gt;"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lets you make changes to the content of a specific document.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://dynalist.io/api/v1/doc/edit</code></p>
-<h3 id='request-parameters-3'>Request parameters</h3>
+<h3 id='request-parameters-4'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -788,7 +787,7 @@
   </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your api secret token&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get the book recommended by Jerry"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Should be available in the city library, or on Amazon for around $25"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Should be available in the city library, or on Amazon for around $25"</span><span class="w">
   </span><span class="s2">"checked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -797,13 +796,15 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">succeeded</span><span class="p">,</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">error</span><span class="w"> </span><span class="err">code</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">returned</span><span class="w"> </span><span class="err">otherwise</span><span class="w">
-  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;new node ID&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">where</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">new</span><span class="w"> </span><span class="err">item</span><span class="w"> </span><span class="err">was</span><span class="w"> </span><span class="err">placed</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">inbox</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint lets you send a new item to your inbox location.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST https://dynalist.io/api/v1/inbox/add</code></p>
-<h3 id='request-parameters-4'>Request parameters</h3>
+<h3 id='request-parameters-5'>Request parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
